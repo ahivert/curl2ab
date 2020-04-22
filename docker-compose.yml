@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    volumes:
+      - ${PWD}:/app
+    image: node:lts-slim
+    command: bash -c 'npm install && npm start'
+    working_dir: /app
+    ports:
+      - "1234:1234"
+      - "4321:4321"

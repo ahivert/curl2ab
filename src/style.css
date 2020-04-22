@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+:root {
+  --background: #fffffe;
+  --text: #0d0d0d;
+  --muted: #2a2a2a;
+  --link: #ff8e3c;
+  --danger: #ff6e6c;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-family: "Open Sans", sans-serif;
+  max-width: 96rem;
+  min-width: 32rem;
+  margin: auto;
+  color: var(--text);
+  background: var(--background);
+  padding: 2rem;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  min-height: calc(100vh - 10rem);
+}
+
+h1 {
+  font-size: 4.6rem;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.25;
+}
+
+h4 {
+  margin: 0 0 0.4rem 0;
+}
+
+hr {
+  margin: 1.8rem 0;
+  border-color: transparent;
+  box-shadow: 0 1rem rgba(0, 0, 0, 0.15);
+}
+
+p {
+  margin: 0 0 0.8rem 0;
+}
+
+a {
+  color: var(--link);
+  font-weight: 600;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+header p {
+  font-size: 1.8rem;
+  color: var(--muted);
+}
+
+footer {
+  margin-top: 2.5rem;
+  text-align: right;
+  color: var(--muted);
+}
+
+pre {
+  background-color: var(--muted);
+  color: var(--background);
+  padding: 1.8rem;
+  border-radius: 0.4rem;
+  font-size: 1.8rem;
+  font-family: monospace;
+}
+
+button {
+  border: 0.1rem solid var(--muted);
+  background-color: transparent;
+  padding: 0.6rem 1rem;
+  border-radius: 0.4rem;
+  color: var(--muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.result {
+  margin-top: 4rem;
+  position: relative;
+}
+
+.result .copy {
+  position: absolute;
+  top: 0.15rem;
+  right: 0;
+}
+
+.hidden {
+  position: absolute;
+  left: -99999em;
+}
+
+/* FORMS */
+label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  display: block;
+  color: var(--headline);
+}
+input,
+textarea {
+  background-color: transparent;
+  border-radius: 0.4rem;
+  box-shadow: none;
+  width: 100%;
+  border: 0.1rem solid var(--muted);
+  padding: 1rem 1rem;
+  margin-bottom: 1.2rem;
+  color: var(--text);
+}
+textarea {
+  resize: vertical;
+  overflow: auto;
+  min-height: 24rem;
+}
+
+form .error {
+  margin-top: -1.4rem;
+  display: block;
+  margin-bottom: 1.4rem;
+  font-weight: 600;
+  color: var(--danger);
+}
+
+/* HELPERS */
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.flex div {
+  flex: 1;
+}
+.flex div:not(:last-child) {
+  margin-right: 4rem;
+}

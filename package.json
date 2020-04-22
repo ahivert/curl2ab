@@ -1,0 +1,31 @@
+{
+  "name": "curl2ab",
+  "version": "0.1.0",
+  "description": "Convert curl command line to ab command line",
+  "main": "src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel serve src/index.html --host 0.0.0.0 --hmr-port 4321",
+    "build": "parcel build src/index.html ‑‑no‑source-maps ‑‑no‑cache",
+    "lint": "prettier --write --plugin-search-dir=. src/**/*.{html,js,css}",
+    "lint:ci": "prettier --check --plugin-search-dir=. src/**/*.{html,js,css}"
+  },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
+  "keywords": [
+    "curl",
+    "ab",
+    "svelte"
+  ],
+  "author": "Anthony Hivert",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {},
+  "devDependencies": {
+    "normalize.css": "^8.0.1",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-svelte": "^4.0.6",
+    "prettier": "^2.0.5",
+    "svelte": "^3.20.1"
+  }
+}
