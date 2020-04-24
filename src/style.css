@@ -2,9 +2,8 @@
 @import url("../node_modules/normalize.css/normalize.css");
 :root {
   --background: #fffffe;
-  --text: #0d0d0d;
-  --muted: #2a2a2a;
-  --link: #ff8e3c;
+  --text: #2b2c34;
+  --link: #6246ea;
   --danger: #ff6e6c;
 }
 
@@ -56,7 +55,7 @@ p {
 
 a {
   color: var(--link);
-  font-weight: 600;
+  text-decoration: none;
 }
 
 header {
@@ -66,17 +65,17 @@ header {
 
 header p {
   font-size: 1.8rem;
-  color: var(--muted);
+  color: var(--text);
 }
 
 footer {
   margin-top: 2.5rem;
   text-align: right;
-  color: var(--muted);
+  color: var(--text);
 }
 
 pre {
-  background-color: var(--muted);
+  background-color: var(--text);
   color: var(--background);
   padding: 1.8rem;
   border-radius: 0.4rem;
@@ -85,11 +84,11 @@ pre {
 }
 
 button {
-  border: 0.1rem solid var(--muted);
+  border: 0.1rem solid var(--text);
   background-color: transparent;
   padding: 0.6rem 1rem;
   border-radius: 0.4rem;
-  color: var(--muted);
+  color: var(--text);
   font-size: 1.2rem;
   cursor: pointer;
   outline: none;
@@ -124,7 +123,7 @@ textarea {
   border-radius: 0.4rem;
   box-shadow: none;
   width: 100%;
-  border: 0.1rem solid var(--muted);
+  border: 0.1rem solid var(--text);
   padding: 1rem 1rem;
   margin-bottom: 1.2rem;
   color: var(--text);
