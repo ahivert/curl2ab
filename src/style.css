@@ -81,6 +81,8 @@ pre {
   border-radius: 0.4rem;
   font-size: 1.8rem;
   font-family: monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 button {

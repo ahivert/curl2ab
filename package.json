@@ -11,7 +11,7 @@
     "lint:ci": "prettier --check --plugin-search-dir=. src/**/*.{html,js,css}"
   },
   "browserslist": [
-    "last 1 chrome versions"
+    "> 2%"
   ],
   "keywords": [
     "curl",

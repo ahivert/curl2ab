@@ -27,13 +27,12 @@
 
   function copy() {
     if (ab.length > 0) {
-      console.log("copied!");
       let el = document.querySelector("#ab");
       el.select();
       document.execCommand("copy");
-      const tmp = copyStr;
+      const prevStr = copyStr;
       copyStr = "Copied!";
-      setTimeout(() => (copyStr = tmp), 3000);
+      setTimeout(() => (copyStr = prevStr), 3000);
     }
   }
 </script>
