@@ -5,21 +5,39 @@
   let ab = "";
   let errors = {};
   let copyStr = "Copy";
+  const headersToCopy = [
+    "origin",
+    "authorization",
+    "accept",
+    "cookie",
+    "user-agent",
+    "accept-encoding",
+    "accept-language",
+    "upgrade-insecure-requests"
+  ];
 
   function curl2ab() {
     errors.curl = null;
     if (curl && curl.indexOf("curl") === 0) {
-      const curlElments = curl.split(" ");
+      const curlElments = curl.split(/'\s+|\s'/);
       const url = curlElments[1];
-      let baseString = `ab -n ${iteration} -c ${concurrency}`;
-      let cookieString = "";
-      if (curl.indexOf("Cookie") > 0) {
-        cookieString = `-C '${curl.match(/-H 'Cookie: ([^']*|$)/)[1]}'`;
-      }
+      let headers = [];
+      curlElments.forEach((part, index) => {
+        if (part === "-H") {
+          const header = curlElments[index + 1];
+          headersToCopy.forEach(headerToCopy => {
+            if (header.toLocaleLowerCase().includes(headerToCopy)) {
+              headers.push(header);
+            }
+          });
+        }
+      });
 
-      ab = cookieString
-        ? `${baseString} ${cookieString} ${url}`
-        : `${baseString} ${url}`;
+      let abString = `ab -n ${iteration} -c ${concurrency}`;
+      headers.forEach(header => {
+        abString += ` -H '${header}'`;
+      });
+      ab = `${abString} ${url}`;
     } else if (curl.length >= 4) {
       errors.curl = "cURL command must start with <code>curl</code>";
     }
