@@ -95,6 +95,12 @@ pre {
   word-wrap: break-word;
 }
 
+code {
+  background-color: var(--text);
+  color: var(--background);
+  padding: 0.25rem 0.5rem;
+}
+
 button {
   border: 0.1rem solid var(--text);
   background-color: transparent;

@@ -1,10 +1,11 @@
 <script>
-  let iteration = 10;
-  let concurrency = 1;
-  let curl = "";
   let ab = "";
-  let errors = {};
+  let concurrency = 1;
   let copyStr = "Copy";
+  let curl = "";
+  let curlPlaceholder = `curl '${window.location}'`
+  let errors = {};
+  let iteration = 10;
   const headersToCopy = [
     "origin",
     "authorization",
@@ -18,9 +19,9 @@
 
   function curl2ab() {
     errors.curl = null;
-    if (curl && curl.indexOf("curl") === 0) {
-      const curlElments = curl.split(/'\s+|\s'/);
-      const url = curlElments[1];
+    const curlElments = curl.split(/\s+'|'\s*/);
+    const url = curlElments[1];
+    if (curl && curl.indexOf("curl") === 0 && url) {
       let headers = [];
       curlElments.forEach((part, index) => {
         if (part === "-H") {
@@ -39,7 +40,7 @@
       });
       ab = `${abString} ${url}`;
     } else if (curl.length >= 4) {
-      errors.curl = "cURL command must start with <code>curl</code>";
+      errors.curl = `cURL command must start with <code>curl</code> and followed by the url wrapped in single quote like <code>'${document.location}'</code>`;
     }
   }
 
@@ -56,13 +57,13 @@
 </script>
 
 <form action="">
-  <label for="curl">Your cURL command</label>
+  <label for="curl">Paste your cURL command</label>
   <textarea
     name="curl"
     id="curl"
     bind:value={curl}
     on:input={curl2ab}
-    placeholder="curl https://google.com" />
+    placeholder={curlPlaceholder} />
   {#if errors.curl}
     <small class="error">
       {@html errors.curl}
@@ -75,7 +76,7 @@
         type="number"
         name="iteration"
         id="iteration"
-        step="1"
+        step="10"
         bind:value={iteration}
         on:input={curl2ab} />
     </div>
