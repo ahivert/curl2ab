@@ -1,9 +1,12 @@
 @import url("../node_modules/normalize.css/normalize.css");
 :root {
   --background: #fffffe;
-  --text: #2b2c34;
-  --link: #6246ea;
-  --danger: #ff6e6c;
+  --text: #0d0d0d;
+  --link: #ff8e3c;
+  --danger: #d9376e;
+  --light: #eff0f3;
+
+  --border-radius: 0.4rem;
 }
 
 html {
@@ -39,10 +42,8 @@ h1 {
 }
 
 h2 {
-  font-size: 1.8rem;
-  font-weight: normal;
+  text-align: left;
   margin: 0 0 0.8rem 0;
-  line-height: 1.25;
 }
 
 h4 {
@@ -62,6 +63,7 @@ p {
 a {
   color: var(--link);
   text-decoration: none;
+  font-weight: 600;
 }
 
 a:hover {
@@ -78,17 +80,47 @@ header p {
   color: var(--text);
 }
 
+div.info {
+  padding: 1.8rem 2rem;
+  background-color: var(--light);
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+}
+
 footer {
   margin-top: 2.5rem;
   text-align: right;
   color: var(--text);
 }
 
+ol {
+  padding: 0;
+  list-style-type: none;
+  counter-reset: counter;
+}
+ol li::before {
+  counter-increment: counter;
+  content: counter(counter);
+  margin-right: 1.2rem;
+  background-color: var(--text);
+  color: var(--light);
+  display: inline-block;
+  width: 1.6rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5rem;
+  text-align: center;
+  font-weight: 600;
+}
+ol li {
+  margin-bottom: 1.2rem;
+}
+
 pre {
   background-color: var(--text);
   color: var(--background);
   padding: 1.8rem;
-  border-radius: 0.4rem;
+  border-radius: var(--border-radius);
   font-size: 1.8rem;
   font-family: monospace;
   white-space: pre-wrap;
@@ -105,7 +137,7 @@ button {
   border: 0.1rem solid var(--text);
   background-color: transparent;
   padding: 0.6rem 1rem;
-  border-radius: 0.4rem;
+  border-radius: var(--border-radius);
   color: var(--text);
   font-size: 1.2rem;
   cursor: pointer;
@@ -138,7 +170,7 @@ label {
 input,
 textarea {
   background-color: transparent;
-  border-radius: 0.4rem;
+  border-radius: var(--border-radius);
   box-shadow: none;
   width: 100%;
   border: 0.1rem solid var(--text);
