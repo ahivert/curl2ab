@@ -19,7 +19,7 @@
 
   function curl2ab() {
     errors.curl = null;
-    const curlElments = curl.split(/\s+'|'\s*/);
+    const curlElments = curl.split(/\s+'|'\s*\\?\s*/);
     const url = curlElments[1];
     if (curl && curl.indexOf("curl") === 0 && url) {
       let headers = [];
