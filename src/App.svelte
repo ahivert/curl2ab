@@ -38,7 +38,7 @@
       headers.forEach(header => {
         abString += ` -H '${header}'`;
       });
-      ab = `${abString} ${url}`;
+      ab = `${abString} '${url}'`;
     } else if (curl.length >= 4) {
       errors.curl = `cURL command must start with <code>curl</code> and followed by the url wrapped in single quote like <code>'${document.location}'</code>`;
     }
