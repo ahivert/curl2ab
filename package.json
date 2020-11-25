@@ -26,6 +26,6 @@
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-svelte": "^4.0.6",
     "prettier": "^2.1.2",
-    "svelte": "^3.29.7"
+    "svelte": "^3.30.0"
   }
 }
