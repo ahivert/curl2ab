@@ -14,7 +14,8 @@
     "user-agent",
     "accept-encoding",
     "accept-language",
-    "upgrade-insecure-requests"
+    "upgrade-insecure-requests",
+    "x-api-token"
   ];
 
   function curl2ab() {
