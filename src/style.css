@@ -2,7 +2,7 @@
 :root {
   --background: #fffffe;
   --text: #0d0d0d;
-  --link: #075985;
+  --link: #fb5607;
   --danger: #d9376e;
   --light: #eff0f3;
 
@@ -102,7 +102,7 @@ ol li::before {
   counter-increment: counter;
   content: counter(counter);
   margin-right: 1.2rem;
-  background-color: var(--link);
+  background-color: var(--text);
   color: var(--light);
   display: inline-block;
   width: 1.6rem;
