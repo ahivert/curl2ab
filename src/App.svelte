@@ -1,8 +1,8 @@
 <script>
-  let ab = "";
+  let abInput = "";
   let concurrency = 1;
   let copyStr = "Copy";
-  let curl = "";
+  let curlInput = "";
   let curlPlaceholder = `curl '${window.location}'`
   let errors = {};
   let iteration = 10;
@@ -20,33 +20,24 @@
 
   function curl2ab() {
     errors.curl = null;
-    const curlElments = curl.split(/\s+'|'\s*\\?\s*/);
+    const curlElments = curlInput.split(/\s+'|'\s*\\?\s*/);
     const url = curlElments[1];
-    if (curl && curl.indexOf("curl") === 0 && url) {
-      let headers = [];
-      curlElments.forEach((part, index) => {
-        if (part === "-H") {
-          const header = curlElments[index + 1];
-          headersToCopy.forEach(headerToCopy => {
-            if (header.toLocaleLowerCase().includes(headerToCopy)) {
-              headers.push(header);
-            }
-          });
+    if (curlInput && curlInput.indexOf("curl") === 0 && url) {
+      curlElments.shift()
+      let abString = `ab -n ${iteration} -c ${concurrency}`;
+      curlElments.forEach((element, index) => {
+        if (element === "-H") {
+          abString += ` -H '${curlElments[index+1]}'`;
         }
       });
-
-      let abString = `ab -n ${iteration} -c ${concurrency}`;
-      headers.forEach(header => {
-        abString += ` -H '${header}'`;
-      });
-      ab = `${abString} '${url}'`;
-    } else if (curl.length >= 4) {
+      abInput = `${abString} '${url}'`;
+    } else if (curlInpu.length >= 4) {
       errors.curl = `cURL command must start with <code>curl</code> and followed by the url wrapped in single quote like <code>'${document.location}'</code>`;
     }
   }
 
   function copy() {
-    if (ab.length > 0) {
+    if (abInput.length > 0) {
       let el = document.querySelector("#ab");
       el.select();
       document.execCommand("copy");
@@ -62,7 +53,7 @@
   <textarea
     name="curl"
     id="curl"
-    bind:value={curl}
+    bind:value={curlInput}
     on:input={curl2ab}
     placeholder={curlPlaceholder} />
   {#if errors.curl}
@@ -95,10 +86,10 @@
 </form>
 <hr />
 <div class="result">
-  {#if ab && curl}
+  {#if abInput && curlInput}
     <h4>ab command</h4>
     <button class="copy" on:click={copy}>{copyStr}</button>
-    <pre>{ab}</pre>
-    <input class="hidden" id="ab" value={ab} />
+    <pre>{abInput}</pre>
+    <input class="hidden" id="ab" value={abInput} />
   {/if}
 </div>
